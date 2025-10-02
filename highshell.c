@@ -66,7 +66,7 @@ int main() {
             if (args[1] == NULL) {
                 chdir(getenv("HOME"));
             } else if (chdir(args[1]) != 0) {
-                printf("hsh: cd: %s: No such file or directory\n", args[1]);
+                printf("hish: cd: %s: No such file or directory\n", args[1]);
             }
             continue;
         }
@@ -75,13 +75,13 @@ int main() {
 
         if (pid == 0) {
             execvp(args[0], args);
-            printf("hsh: command not found: %s\n", args[0]);
+            printf("hish: command not found: %s\n", args[0]);
             exit(EXIT_FAILURE);
         } else if (pid > 0) {
             int status;
             waitpid(pid, &status, 0);
         } else {
-            printf("hsh: fork failed\n");
+            printf("hish: fork failed\n");
         }
     }
     return 0; 
